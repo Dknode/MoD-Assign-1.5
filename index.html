@@ -106,7 +106,7 @@
   L.mapbox.accessToken = 'pk.eyJ1IjoiZGltcCIsImEiOiJkRnlra3RjIn0.E9CTYzNUEx0yb3dcfV4SiA';
 
 var myData1;
-
+var myData2;
 function mapGraph(){
   d3.json("https://s3.amazonaws.com/cttransit-realtime-prod/vehiclepositions_pb.json", function(data1) {
     myData1 = data1;
@@ -114,10 +114,10 @@ function mapGraph(){
     console.log(data1);
 
 
-    var map_1 = L.mapbox.map('map_1')
-    .setView([41.8, -72.72], 10.5)
-    .addLayer(L.mapbox.styleLayer('mapbox://styles/dknode/ckzfufu88001w14mrf4vcvshy'));
-    map_1.scrollWheelZoom.disable();
+    // var map_1 = L.mapbox.map('map_1')
+    // .setView([41.8, -72.72], 10.5)
+    // .addLayer(L.mapbox.styleLayer('mapbox://styles/dknode/ckzfufu88001w14mrf4vcvshy'));
+    // map_1.scrollWheelZoom.disable();
 
 
     data1.entity.forEach(function(station){
@@ -138,7 +138,7 @@ function mapGraph(){
     });
 
 
- {myData2.forEach(function(station){
+  myData2.forEach(function(station){
      
       var path_options = {
         radius :  4.5,
@@ -150,7 +150,6 @@ function mapGraph(){
       };
       L.circleMarker([station.geom.latitude, station.geom.longitude], path_options).addTo(map_1);
     });
-  }
   });
 
   d3.json("https://data.hartford.gov/resource/uxtm-zebz.json", function(data2) {
@@ -158,6 +157,11 @@ function mapGraph(){
 
 
 };
+  var map_1 = L.mapbox.map('map_1')
+     .setView([41.8, -72.72], 10.5)
+     .addLayer(L.mapbox.styleLayer('mapbox://styles/dknode/ckzfufu88001w14mrf4vcvshy'));
+     map_1.scrollWheelZoom.disable();
+
 new mapGraph
 setInterval(mapGraph, 10000);
 
