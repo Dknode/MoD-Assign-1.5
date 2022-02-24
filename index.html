@@ -114,11 +114,6 @@ function mapGraph(){
     console.log(data1);
 
 
-    // var map_1 = L.mapbox.map('map_1')
-    // .setView([41.8, -72.72], 10.5)
-    // .addLayer(L.mapbox.styleLayer('mapbox://styles/dknode/ckzfufu88001w14mrf4vcvshy'));
-    // map_1.scrollWheelZoom.disable();
-
 
     data1.entity.forEach(function(station){
 
@@ -133,10 +128,11 @@ function mapGraph(){
       };
 
 
-      L.circleMarker([station.vehicle.position.latitude, station.vehicle.position.longitude ], path_options).addTo(map_1);
+      L.circleMarker([station.vehicle.position.latitude, station.vehicle.position.longitude], path_options).addTo(map_1);
 
     });
 
+var circleMarkers = [];
 
   myData2.forEach(function(station){
      
@@ -148,7 +144,8 @@ function mapGraph(){
         opacity : .5,
         fillOpacity : 0.1
       };
-      L.circleMarker([station.geom.latitude, station.geom.longitude], path_options).addTo(map_1);
+      circleMarkers.push(L.circleMarker([station.geom.latitude, station.geom.longitude], path_options).addTo(map_1));
+      
     });
   });
 
