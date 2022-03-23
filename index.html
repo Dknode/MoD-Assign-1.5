@@ -29,7 +29,7 @@
 
   </style>
   <!-- D3 -->
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="img\Personal Emblem-Signature.png">
@@ -59,6 +59,10 @@
     </div>
   </div>
 
+<div class="container" >
+    <div id="chord" class="twelve columns">
+    </div>
+  </div>
   
   <div class="container one-bottom" >
     <div class="row">
@@ -144,6 +148,7 @@ var circleMarkers = [];
         opacity : .5,
         fillOpacity : 0.1
       };
+      
       circleMarkers.push(L.circleMarker([station.geom.latitude, station.geom.longitude], path_options).addTo(map_1));
       
     });
@@ -163,7 +168,6 @@ new mapGraph
 setInterval(mapGraph, 10000);
 
   </script>
-
 
 </body>
 </html>
